@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2684742916267790319}
   - component: {fileID: 1366483221652378911}
   m_Layer: 0
-  m_Name: WeightPrefab
+  m_Name: Weight
   m_TagString: Weight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

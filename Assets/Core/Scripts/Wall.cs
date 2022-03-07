@@ -8,7 +8,7 @@ public class Wall : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.tag =="Player")
+		if (other.tag =="Player" || other.tag == "Huggy")
 			for (int i = 0; i < _bricks.Length; i++)
 			{
 				_bricks[i].useGravity = true;

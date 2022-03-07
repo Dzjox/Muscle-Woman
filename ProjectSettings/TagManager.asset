@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Treadmill
   - Money
+  - Huggy
   layers:
   - Default
   - TransparentFX

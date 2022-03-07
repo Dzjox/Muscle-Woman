@@ -8,11 +8,11 @@ public class PlayerMuscle : MonoBehaviour
 
 	public static Action<float> ChangeMuscle;
 
-	private readonly float _addMuscleWithWeght = 7f;
-	private readonly float _addMuscleWithDumbbell = 3f;
+	[SerializeField] private float _addMuscleWithWeght = 7f;
+	[SerializeField] private float _addMuscleWithDumbbell = 3f;
 
-	private readonly float _removeMuscleWithWall = 20f;
-	private readonly float _removeMuscleWithTreadmill = 10f;
+	[SerializeField] private  float _removeMuscleWithWall = 20f;
+	[SerializeField] private float _removeMuscleWithTreadmill = 10f;
 
 	private float Muscle 
 	{
