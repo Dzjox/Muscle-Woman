@@ -10,6 +10,7 @@ TagManager:
   - Treadmill
   - Money
   - Huggy
+  - EndGameTriger
   layers:
   - Default
   - TransparentFX

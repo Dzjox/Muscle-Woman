@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 0}
-  _speed: 5
+  _animator: {fileID: 1330095178506006186}
+  _speed: 7.5
   _sideSpeed: 6
   _placeOnRaod: 0.5
 --- !u!114 &4441320833484987048
@@ -192,6 +193,11 @@ PrefabInstance:
 --- !u!4 &4941959864020808912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a172319cd6073e245a073d99b7104ae7, type: 3}
+  m_PrefabInstance: {fileID: 4836838707217552187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1330095178506006186 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: a172319cd6073e245a073d99b7104ae7, type: 3}
   m_PrefabInstance: {fileID: 4836838707217552187}
   m_PrefabAsset: {fileID: 0}
 --- !u!137 &7178621492605593404 stripped
