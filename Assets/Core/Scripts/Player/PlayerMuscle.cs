@@ -6,13 +6,14 @@ public class PlayerMuscle : MonoBehaviour
 	[SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
 	[SerializeField] private float _muscles = 0;
 
-	public static Action<float> ChangeMuscle;
-
 	[SerializeField] private float _addMuscleWithWeght = 7f;
 	[SerializeField] private float _addMuscleWithDumbbell = 3f;
 
 	[SerializeField] private  float _removeMuscleWithWall = 20f;
-	[SerializeField] private float _removeMuscleWithTreadmill = 10f;
+	[SerializeField] private float _removeMuscleWithTreadmill = 30f;
+
+	public static Action<float> ChangeMuscle;
+	private bool isTreadmill;
 
 	private float Muscle 
 	{
@@ -24,8 +25,14 @@ public class PlayerMuscle : MonoBehaviour
 			else _muscles = value;
 
 			_skinnedMeshRenderer.SetBlendShapeWeight(0,_muscles);
-			ChangeMuscle.Invoke(_muscles);
+			ChangeMuscle?.Invoke(_muscles);
 		}
+	}
+
+	private void FixedUpdate()
+	{
+		if (!isTreadmill) return;
+		Muscle -= _removeMuscleWithTreadmill * Time.fixedDeltaTime;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -34,6 +41,11 @@ public class PlayerMuscle : MonoBehaviour
 		if (other.tag == "Dumbbell") Muscle += _addMuscleWithDumbbell;
 
 		if (other.tag == "Wall") Muscle -= _removeMuscleWithWall;
-		if (other.tag == "Treadmill") Muscle -= _removeMuscleWithTreadmill;
+		if (other.tag == "Treadmill") isTreadmill = true;
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.tag == "Treadmill") isTreadmill = false;
 	}
 }
