@@ -16,10 +16,20 @@ public class PlayerMovement : MonoBehaviour
 	private readonly float _roadWidth = 2.4f;
 	private readonly float _runAnimationCoeff = 1 / 7.5f;
 
-	private void Start()
+	private void Awake()
 	{
 		_playerInput.HorizontalChange += ((value) => _placeOnRaod = value);
 		_animator.speed = _speed * _runAnimationCoeff;
+	}
+
+	private void Start()
+	{
+		EndGameCinema.Instance.EndGame += OnEndGame;
+	}
+
+	private void OnDestroy()
+	{
+		EndGameCinema.Instance.EndGame -= OnEndGame;
 	}
 
 	private void Update()
@@ -43,15 +53,14 @@ public class PlayerMovement : MonoBehaviour
 		return (transform.position.x - target > 0) ? - result : result;
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void OnEndGame(bool isWin)
 	{
-		if (other.tag == "EndGameTriger") StartEndGameAnimation();
+		if (isWin) StartEndGameAnimation();
 	}
 
 	private void StartEndGameAnimation()
 	{
-		_playerInput.HorizontalChange -= ((value) => _placeOnRaod = value);
-		_placeOnRaod = 0f;
+		_placeOnRaod = 0.5f;
 		_speed = 0;
 		_animator.SetTrigger("TurnAround");
 	}

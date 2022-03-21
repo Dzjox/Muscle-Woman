@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowTo : MonoBehaviour
 {
 	[SerializeField] private Transform _target;
 	private Vector3 _offset;
+
+	public Vector3 Offset => _offset;
 
 	private void Start()
 	{
